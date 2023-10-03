@@ -1,43 +1,71 @@
 package com.discord.empleados.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "empleados")
 public class Empleado {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="Nempleado")
     private long Nempleado;
+
+    @Column(name="nombre")
     private String nombre;
-    private String apelidos;
+
+    @Column(name="apellidos")
+    private String apellidos;
+
+    @Column(name="dni")
     private String dni;
+
+    @Column(name="domicilio")
     private String domicilio;
+
+    @Column(name="telefono")
     private String telefono;
+
+    @Column(name="email")
     private String email;
-    private float salario;
+
+    @Column(name="salario")
+    private double salario;
+
+    @Column(name="Cproyecto")
     private long Cproyecto;
+
+    @Column(name="Cdepartamento")
     private long Cdepartamento;
 
+    @Column(name="fingreso")
+    private String fingreso;
+
     public long getNempleado() {
-        return Nempleado;
+        return this.Nempleado;
     }
 
     public void setNempleado(long nempleado) {
-        Nempleado = nempleado;
+        this.Nempleado = nempleado;
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getApelidos() {
-        return apelidos;
+    public String getApellidos() {
+        return this.apellidos;
     }
 
-    public void setApelidos(String apelidos) {
-        this.apelidos = apelidos;
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getDni() {
-        return dni;
+        return this.dni;
     }
 
     public void setDni(String dni) {
@@ -45,7 +73,7 @@ public class Empleado {
     }
 
     public String getDomicilio() {
-        return domicilio;
+        return this.domicilio;
     }
 
     public void setDomicilio(String domicilio) {
@@ -53,7 +81,7 @@ public class Empleado {
     }
 
     public String getTelefono() {
-        return telefono;
+        return this.telefono;
     }
 
     public void setTelefono(String telefono) {
@@ -61,34 +89,42 @@ public class Empleado {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public float getSalario() {
-        return salario;
+    public double getSalario() {
+        return this.salario;
     }
 
-    public void setSalario(float salario) {
+    public void setSalario(double salario) {
         this.salario = salario;
     }
 
     public long getCproyecto() {
-        return Cproyecto;
+        return this.Cproyecto;
     }
 
     public void setCproyecto(long cproyecto) {
-        Cproyecto = cproyecto;
+        this.Cproyecto = cproyecto;
     }
 
     public long getCdepartamento() {
-        return Cdepartamento;
+        return this.Cdepartamento;
     }
 
     public void setCdepartamento(long cdepartamento) {
-        Cdepartamento = cdepartamento;
+        this.Cdepartamento = cdepartamento;
+    }
+
+    public String getFingreso() {
+        return this.fingreso;
+    }
+
+    public void setFingreso(String fingreso) {
+        this.fingreso = fingreso;
     }
 }

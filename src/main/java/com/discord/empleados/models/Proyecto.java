@@ -1,8 +1,19 @@
 package com.discord.empleados.models;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "proyectos")
 public class Proyecto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="Cproyecto")
     private long Cproyecto;
+
+    @Column(name="nombre")
     private String nombre;
+
+    @Column(name="descripcion")
     private String descripcion;
 
     public long getCproyecto() {

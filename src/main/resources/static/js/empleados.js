@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', event => {
     if (datatablesSimple) {
         new simpleDatatables.DataTable(datatablesSimple);
     }
+});
 
     async function cargarEmpleados() {
 
@@ -23,7 +24,7 @@ window.addEventListener('DOMContentLoaded', event => {
             let listadoHTML = '';
             for (let empleado of empleados){
                 let botonEliminar = '<a href="#" onclick="eliminarUsuario(' + empleado.nempleado + ')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
-                let botonEditar = '<a href="#" onclick="editarUsuario(' + empleado.nempleado + ')" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i></a></td>';
+                let botonEditar = '<a href="#" onclick="editarUsuario(' + empleado.nempleado + ')" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i></a>';
 
                 let empleadoHTML = '<tr><td>' + empleado.nempleado + '</td><td>'
                                               + empleado.nombre + '</td><td>'
@@ -39,13 +40,13 @@ window.addEventListener('DOMContentLoaded', event => {
 
         }
 
-    async function eliminarUsuario(id) {
+    async function eliminarUsuario(nempleado) {
         if (!confirm('ATENCIÓN - ¿Desea eliminar este Empleado?')) {return;}
 
-         alert(id);
+         alert(nempleado);
 
-         const request = awit fetch('eliminar/' + id, {
-            method: 'DELETE'
+         const request = await fetch('eliminar/' + nempleado, {
+            method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-type': 'application/json'
@@ -55,4 +56,4 @@ window.addEventListener('DOMContentLoaded', event => {
          location.reload();
     }
 
-});
+

@@ -7,6 +7,7 @@ window.addEventListener('DOMContentLoaded', event => {
     if (datatablesSimple) {
         new simpleDatatables.DataTable(datatablesSimple);
     }
+});
 
         async function cargarProyectos() {
 
@@ -21,11 +22,32 @@ window.addEventListener('DOMContentLoaded', event => {
 
                 let listadoHTML = '';
                 for (let proyecto of proyectos){
-                    let proyectoHTML = '<tr><td>' + proyecto.cproyecto + '</td><td>' + proyecto.nombre + '</td><td>' + proyecto.descripcion + '</td><td>' + " - " + '</td></tr>';
+                    let botonEliminar = '<a href="#" onclick="eliminarProyecto(' + proyecto.cproyecto + ')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>';
+                    let botonEditar = '<a href="#" onclick="editarProyecto(' + proyecto.cproyecto + ')" class="btn btn-info btn-circle btn-sm"><i class="fas fa-info-circle"></i></a>';
+
+
+                    let proyectoHTML = '<tr><td>' + proyecto.cproyecto + '</td><td>' + proyecto.nombre + '</td><td>' + proyecto.descripcion + '</td><td>' + botonEliminar + '  ' + botonEditar + '</td></tr>';
                     listadoHTML += proyectoHTML;
                 }
 
                         document.querySelector('tbody').outerHTML = listadoHTML;
 
-            }
-});
+        }
+
+        async function eliminarProyecto(cproyecto) {
+                if (!confirm('ATENCIÓN - ¿Desea eliminar este Proyecto?')) {return;}
+
+                 alert(cproyecto);
+
+                 const request = await fetch('eliminarproyecto/' + cproyecto, {
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-type': 'application/json'
+                    }
+                 });
+
+                 location.reload();
+        }
+
+

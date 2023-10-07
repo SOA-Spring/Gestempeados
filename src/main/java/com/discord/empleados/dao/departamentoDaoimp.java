@@ -19,4 +19,10 @@ public class departamentoDaoimp implements departamentoDao {
         String query = "FROM Departamento";
         return entityManager.createQuery(query).getResultList();
     }
+
+    @Override
+    public void eliminarDepartamento(long cdepartamento) {
+        Departamento departamento = entityManager.find(Departamento.class, cdepartamento);
+        entityManager.remove(departamento);
+    }
 }

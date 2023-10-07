@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface proyectoDao {
     List<Proyecto> getListProyecto();
+    void eliminarProyecto(long cproyecto);
 }

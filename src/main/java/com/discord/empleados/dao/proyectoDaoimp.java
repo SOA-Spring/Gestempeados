@@ -19,4 +19,10 @@ public class proyectoDaoimp implements proyectoDao{
         String query = "FROM Proyecto";
         return entityManager.createQuery(query).getResultList();
     }
+
+    @Override
+    public void eliminarProyecto(long cproyecto) {
+        Proyecto proyecto = entityManager.find(Proyecto.class, cproyecto);
+        entityManager.remove(proyecto);
+    }
 }
